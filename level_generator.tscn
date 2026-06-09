@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://du4perxmgqdde"]
+
+[ext_resource type="Script" uid="uid://bth6v6g2q8d2l" path="res://level_generator.gd" id="1_q7b6x"]
+[ext_resource type="Texture2D" uid="uid://ksxs2he5ivww" path="res://icon.svg" id="2_ciddx"]
+[ext_resource type="PackedScene" uid="uid://bjs8f7ina023u" path="res://player.tscn" id="2_u0blr"]
+[ext_resource type="PackedScene" uid="uid://bp7gf6okg2sqv" path="res://enemy.tscn" id="3_4n1mc"]
+[ext_resource type="PackedScene" uid="uid://br4tlnl5mtdgo" path="res://obstacle.tscn" id="4_4n1mc"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jbegq"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1mgij"]
+texture = ExtResource("2_ciddx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jbegq")
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u0blr"]
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_1mgij")
+
+[node name="LevelGenerator" type="Node2D" unique_id=808067207]
+script = ExtResource("1_q7b6x")
+player_scene = ExtResource("2_u0blr")
+enemy_scene = ExtResource("3_4n1mc")
+obstacle_scene = ExtResource("4_4n1mc")
+map_seed = 2026
+wall_tile_coords = Vector2i(1, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=775604136]
+tile_set = SubResource("TileSet_u0blr")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=600391219]
+
+[node name="Label" type="Label" parent="HUD" unique_id=1133003557]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
+text = "Generation: 1"

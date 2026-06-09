@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://br4tlnl5mtdgo"]
+
+[ext_resource type="Script" uid="uid://dhe63s77qlq70" path="res://obstacle.gd" id="1_aubd6"]
+[ext_resource type="Texture2D" uid="uid://ksxs2he5ivww" path="res://icon.svg" id="1_sl1jc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl1jc"]
+radius = 9.6
+
+[node name="Obstacle" type="StaticBody2D" unique_id=118493719]
+script = ExtResource("1_aubd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462571012]
+modulate = Color(0.28335837, 0.20371565, 0.060457736, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_sl1jc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779701199]
+shape = SubResource("CircleShape2D_sl1jc")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=37813455]
+radius = 15.0
